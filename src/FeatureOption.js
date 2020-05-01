@@ -1,5 +1,5 @@
-import React from 'react'
-import Feature from './Feature'
+import React from 'react';
+import Feature from './Feature';
 import slugify from 'slugify';
 
 export default function FeatureOption(props){
@@ -14,5 +14,6 @@ return (
                 {item.name} ({USCurrencyFormat.format(item.cost)})
               </label>
           
-)
-};
+);
+
+

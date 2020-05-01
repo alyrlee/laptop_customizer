@@ -1,19 +1,25 @@
-import React from 'react'
-import FeatureOption from './FeatureOption'
+import React from 'react';
+import FeatureOption from './FeatureOption';
 import slugify from 'slugify';
+import { render } from 'react-dom';
 
 
 export default function FeatureItem(props) {
-const {feature, item}= props;
+const {features, selected,featureTitle, handleUpdate}= props;
 
-return (
-    <div className="feature__item">
-                <input 
-                    type="radio"
-                    id={this.props.id}
-                    className="feature__option"
-                    name={this.props.type}
-                    onClick={this.props.click}></input>
+const options = features[featureTitle].map((item, index) =>
+    <ItemOption
+      key={index}
+      item={item}
+      selected={selected}
+      featureTitle={featureTitle}     
+      handleUpdate={handleUpdate}
+    />
+  );
+
+
+return(
+    <div className="feature">
 </div>
-)
-};      
+);
+}  
