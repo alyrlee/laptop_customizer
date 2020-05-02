@@ -1,32 +1,39 @@
 import React from 'react';
 
+class FeatureItem extends React.Component {
+        constructor(props){
+                super(props);
+                this.state = {
+                        backgroundColor: props.bgColor,
+                }
+        }
 
-export default function FeatureItem(props) {
-const {features, selected,featureTitle, handleUpdate}= props;
+        handleClick() {
+                this.props.onClick && this.props.onClick(this.props.name, this.props.cost, this.props.title)
+        }
 
-const options = features[featureTitle].map((item, index) =>
-    <ItemOption
-      key={index}
-      item={item}
-      selected={selected}
-      featureTitle={featureTitle}     
-      handleUpdate={handleUpdate}
-    />
-  );
+        selectedColor() {
+                const selectedName = Object.keys(this.props.selected).map(key => this.props.selected[key][0])
+                        if (selectedName.includes(this.props.name)) {
+                                return 'gainsboro';
+                        }
+                return "";
+        }
 
-
-  return (
-    <div className="feature" >
-       <li key={this.props.index} className="feature__item"
-            onClick={() => this.handleClick()}
-            style={{backgroundColor: this.selectedColor()}}
-          >
-    <div className="feature_option">
-          {this.props.name} (${this.props.cost})
-    </div>
-    </li>
-  </div>
-);
-}  
+        render() {
+                return (
+                        <div className="feature" >
+                                        <li key={this.props.index} className="feature__item"
+                                        onClick={() => this.handleClick()}
+                                        style={{backgroundColor: this.selectedColor()}}
+                                        >
+                                        <div className="feature_option">
+                                                {this.props.name} (${this.props.cost})
+                                        </div>
+                                </li>
+                        </div>
+                )
+        }
+}
 
 export default FeatureItem;
