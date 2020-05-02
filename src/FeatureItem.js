@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import FeatureOption from './FeatureOption';
 
 function FeatureItem (props) {
     const { features, selected, featureTitle, handleUpdate } = props;
   
     const options = features[featureTitle].map((item, index) =>
-      <ItemOption
+      <FeatureOption
         key={index}
         item={item}
         selected={selected}

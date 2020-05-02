@@ -1,4 +1,7 @@
 import React from 'react';
+import FeatureItem from './FeatureItem';
+import FEATURES from './index';
+import FeatureOption from './FeatureOption';
 
 function MainForm (props) {
 
