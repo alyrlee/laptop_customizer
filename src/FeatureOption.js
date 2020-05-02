@@ -1,24 +1,42 @@
 import React from 'react';
+import slugify from 'slugify';
+
+const USCurrencyFormat = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
 
 function FeatureOption (props) {
-    const { item, selected, featureTitle, handleUpdate } = props;
+    const features = Object.keys(this.props.features).map((feature, idx) => {
+        const featureHash = feature + '-' + idx;
+        const options = this.props.features[feature].map(item => {
+          const itemHash = slugify(JSON.stringify(item));
+          return (
+            <div key={itemHash} className="feature__item">
+              <input
+                type="radio"
+                id={itemHash}
+                className="feature__option"
+                name={slugify(feature)}
+                checked={item.name === this.state.selected[feature].name}
+                onChange={e => this.updateFeature(feature, item)}
+              />
+              <label htmlFor={itemHash} className="feature__label">
+                {item.name} ({USCurrencyFormat.format(item.cost)})
+              </label>
+            </div>
+          );
+        });
   
-    const selectedClass = item.name === selected[featureTitle].name ? 'feature__selected' : '';
-    const featureClass = 'feature__option ' + selectedClass;
-    
-    return (
-      <li className="feature__item">
-        <div className={featureClass}
-  
-          onClick={() => handleUpdate(featureTitle, item)}>
-          {item.name}
-          ({new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-            .format(item.cost)})
-  
-          </div>
-      </li>
-
-    );
-}
+        return (
+          <fieldset className="feature" key={featureHash}>
+            <legend className="feature__name">
+              <h3>{feature}</h3>
+            </legend>
+            {options}
+          </fieldset>
+        );
+      });
+    }  
 
 export default FeatureOption;
