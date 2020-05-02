@@ -1,24 +1,35 @@
 import React from 'react';
-import FeatureItem from './FeatureItem';
 
+function MainForm (props) {
+  return (
 
-function MainForm(props) {
-    return (
-        <section className="main__form" role="region">
-            <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
-            {Object.keys(props.features)
-                .map((key, index, title) => 
-                    <FeatureItem
-                        key={index}
-                        index={index}
-                        title={title[index]}
-                        options={props.features[key]}
-                        selected={props.selected}
-                        onClick={props.onClick} 
-                    />
-            )}
-        </section>
-    );
+ <section className="main__form" role="region">
+     <h2>Customize your laptop</h2>
+
+{
+    const features = }Object.keys(this.props.features).map((feature, idx) => 
+{ 
+    const featureHash = feature + '-' + idx;
+      const options = this.props.features[feature].map(item => {
+        const itemHash = slugify(JSON.stringify(item));
+
+        return (
+          <div key={itemHash} className="feature__item">
+            <input
+              type="radio"
+              id={itemHash}
+              className="feature__option"
+              name={slugify(feature)}
+              checked={item.name === this.state.selected[feature].name}
+              onChange={e => this.updateFeature(feature, item)}
+            />
+            <label htmlFor={itemHash} className="feature__label">
+              {item.name} ({USCurrencyFormat.format(item.cost)})
+            </label>
+          </div>
+          </section>
+
+  );  
 }
 
 export default MainForm;
