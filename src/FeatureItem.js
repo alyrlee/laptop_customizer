@@ -1,7 +1,4 @@
 import React from 'react';
-import FeatureOption from './FeatureOption';
-import slugify from 'slugify';
-import { render } from 'react-dom';
 
 
 export default function FeatureItem(props) {
@@ -18,8 +15,18 @@ const options = features[featureTitle].map((item, index) =>
   );
 
 
-return(
-    <div className="feature">
-</div>
+  return (
+    <div className="feature" >
+       <li key={this.props.index} className="feature__item"
+            onClick={() => this.handleClick()}
+            style={{backgroundColor: this.selectedColor()}}
+          >
+    <div className="feature_option">
+          {this.props.name} (${this.props.cost})
+    </div>
+    </li>
+  </div>
 );
 }  
+
+export default FeatureItem;

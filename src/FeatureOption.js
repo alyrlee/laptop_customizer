@@ -1,19 +1,30 @@
 import React from 'react';
-import Feature from './Feature';
 import slugify from 'slugify';
+import FEATURES from 'index.js';
 
-export default function FeatureOption(props){
-    const {feature, option, idx}= props;
-return (
-    <fieldset className="feature__option"
-                name={slugify(feature)}
-                checked={item.name === this.state.selected[feature].name}
-                onChange={e => this.updateFeature(feature, item)}
-              />
-    <label htmlFor={itemHash} className="feature__label">
-                {item.name} ({USCurrencyFormat.format(item.cost)})
-              </label>
+function FeatureOption (props) {
+  return (
+      <section className="main__form">
+          <div className="feature__name">{props.title}</div>
+          <ul className="feature__list">
+              {props.options && props.options.map((key, index, options,) =>
+                  <Parts
+                      key={index}
+                      title={props.title}
+                      parts={options[index]}
+                      selected={props.selected}
+                      name={key.name}
+                      cost={key.cost}
+                      onClick={props.onClick}
+                      bgColor={props.bgColor}
+                      change={props.change}                   
+                  />
+              )}
+          </ul>
+      </section>
+  );
+}
           
-);
+Export default FeatureOption;
 
 
