@@ -1,17 +1,19 @@
 import React from 'react'
-import features from './Feature'
-import FeatureItem from './FeatureItem'
 
-extend default function MainForm(props) {
-    const features  = Object.keys(features)
-    );
-
-   //not sure what place here 
-
+function MainForm(props) {
     return (
-            <section className="main__form">
-            { features }
-            </section>
-)
+        <section className="main__form" role="region">
+        <div> ... </div>
+        <h3> Info </h3>
+        <ItemOption
+        key={index}
+        item={item}
+        selected={selected}
+        featureTitle={featureTitle}     
+      /> 
+</section>
+
+);
     }
 
+export default 
