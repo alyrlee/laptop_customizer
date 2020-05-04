@@ -1,18 +1,18 @@
 import React from 'react'
 
 function MainSummary(props) {
-const { featureTitle, selected } = props;
+
 
     return (
 
-<div className="summary__option">
-      <div className="summary__option__label">{featureTitle}</div>
-      <div className="summary__option__value">{selected[featureTitle].name}</div>
-      <div className="summary__option__cost">
+        <div className="summary__option" key={props.index}>
+        <div className="summary__option__label">{props.title} </div>
+        <div className="summary__option__value">{props.name} </div>
+        <div className="summary__option__cost">
             
 
 {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-          .format(selected[featureTitle].cost)}      
+          .format(props.cost)}      
 
 </div>
 </div>

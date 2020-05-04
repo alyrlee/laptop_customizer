@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FEATURES from './index';
-import MainSummary from './Main_Summary';
 import MainForm from './Main_Form';
+import MainSummary from './Main_Summary.js'
 import Total from './Total';
 import './App.css';
 
