@@ -1,24 +1,29 @@
-import React from 'react'
+import React from 'react';
+import Total from './Total';
+import Summary from './Summary';
 
 function MainSummary(props) {
 
-
     return (
-
-        <div className="summary__option" key={props.index}>
-        <div className="summary__option__label">{props.title} </div>
-        <div className="summary__option__value">{props.name} </div>
-        <div className="summary__option__cost">
+        <section className="main__summary" role="region">
+        {Object.keys(props.selected)
+            .map((key, index, title) =>
+            <Summary 
+                key={key}
+                index={index}
+                name={props.selected[key][0]}
+                title={Object.keys(props.selected)[index]}
+                cost={props.selected[key][1]}
+                selectedParts={props.selected}
+            />
+        )}
             
+        <Total 
+             total={props.total}
+        />
+        </section>
+    )
+        }
 
-{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-          .format(props.cost)}      
-
-</div>
-</div>
-
-);
-
-}
 
 export default MainSummary;

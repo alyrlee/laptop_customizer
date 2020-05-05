@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import FEATURES from './index';
 import MainForm from './Main_Form';
-import MainSummary from './Main_Summary.js'
-import Total from './Total';
+import MainSummary from './Main_Summary.js';
 import './App.css';
 
 
@@ -46,21 +45,24 @@ total = () => {
       return (
           <div className="App">
               <header role="banner">
-                  <h1>ELF Computing</h1>
-                  <h3>Laptops</h3>
-                  <h5>Customize your laptop</h5>  
-              </header>      
+              <h1>ELF Computing | Laptops</h1>
+              <h2>Customize your laptop</h2>
+              </header>    
+            <div className="main__form">
               <main role="main">
                   <MainForm
                       features={this.state.features}
                       selected={this.state.selected}
                       onClick={this.handleClick} 
                   />
+              <div className="main__summary">  
                   <MainSummary 
                       selected={this.state.selected}
                       total={this.total()}
                   />
+                  </div>  
               </main>
+          </div>
           </div>
       );
   }
