@@ -16,6 +16,7 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 //use class to define the component 
 class App extends Component {
   //setting up state object for App 
+  //default values for state
   state = {
     selected: {
       Processor: {
@@ -46,15 +47,15 @@ class App extends Component {
     });
   };
 
-  //use render as a prop to displat features element.render  returns a description of what you want to see on the screen. this will display feature item. 
+  //use render as a prop to display features element.render  returns a description of what you want to see on the screen. this will display feature item. 
   render() {
     //The Object.keys() method returns an array of a given object's own enumerable property names, iterated in the same order that a normal loop would. Taking in array of features and creating a new list with features element and index of the element
     const features = Object.keys(this.props.features).map((feature, idx) => {
-      //function with variable featureHash 
+      // variable featureHash 
       const featureHash = feature + '-' + idx;
       //function with variable options that is equal to features props
       const options = this.props.features[feature].map(item => {
-        //function with variable itemHash pulls JSON response an turns it into text with item name
+        //function with variable itemHash pulls JSON response and turns it into text with item name
         const itemHash = slugify(JSON.stringify(item));
         //return div element with key for itemHash and append it to feature item as a form (radio input) that takes in elements: type, id, className, name as string with feature. Props accessed by this.state.selected to check if a checbkbox is cheked or onchecked. Label triggers the onchange event to update feature with feature element and item element (actually checkbox is hidden). Each one of these selected attributes is mapped to a form input.
         
@@ -91,7 +92,7 @@ class App extends Component {
       );
     });
 
-    //define summary vatiaable that returns an array of a given object's own enumerable property names, iterated in the same order that a normal loop would. Taking in array of features and creating a new list with features element and index of the element; display selected options for feature
+    //define summary variable that returns an array of a given object's own enumerable property names, iterated in the same order that a normal loop would. Taking in array of features and creating a new list with features element and index of the element; display selected options for feature
     const summary = Object.keys(this.state.selected).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
       const selectedOption = this.state.selected[feature];

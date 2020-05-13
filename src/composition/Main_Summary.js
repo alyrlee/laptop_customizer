@@ -1,36 +1,25 @@
-import React from 'react';
-import FEATURES from './index.js'
-
 //import from SummaryOption and Summary Total
 //contain the Summary component
-
-
-import React from 'react';
+import React, {Component} from 'react';
 import SummaryTotal from './Summary_Total';
 import SummaryOption from './Summary_Option';
 
-function MainSummary(props) {
+class MainSummary extends Component {
+    render(props) {
+     return (
+      <section className="main__summary">
+        <h3>NEW GREENLEAF 2018</h3>
+         <SummaryOption />
+         <SummaryTotal />   
+       </section>>      
+     <div className="summary__total__value">
+              { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
+              .format(props.total) }
+     </div>         
 
-    return (
-        <section className="main__summary" role="region">
-        {Object.keys(props.selected)
-            .map((key, index, title) =>
-            <SummaryOption 
-                key={key}
-                index={index}
-                name={props.selected[key][0]}
-                title={Object.keys(props.selected)[index]}
-                cost={props.selected[key][1]}
-                selectedParts={props.selected}
-            />
-        )}
-            
-        <Total 
-             total={props.total}
-        />
-        </section>
-    )
-        }
+          )
+     }
+}
 
 
 export default MainSummary;

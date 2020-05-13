@@ -1,14 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-function SummaryOption (props){
-    
+class SummaryOption extends Component{
+    render(props) {
     return (
-        <div className="summary__option" key={featureHash}>
-        <div className="summary__option__label">{feature} </div>
-        <div className="summary__option__value">{selectedOption.name}</div>
-        <div className="summary__option__cost"></div>
+        <div className="summary__option" key={props.index}>
+        <div className="summary__option__label">{props.title}
+        <div className="summary__option__value">{props.name}</div>
+        <div className="summary__option__cost">
+        { new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'})
+       .format(props.cost) }
+        </div>
+        </div>
         </div>
     );
+}
 }
 
 export default SummaryOption;
