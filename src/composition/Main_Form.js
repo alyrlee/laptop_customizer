@@ -1,25 +1,27 @@
-import React from 'react';
-import FEATURES from './src/index.js'
+import React, {Component} from 'react';
+// import FEATURES from './src/index.js';
 import FeatureItem from './Feature_Item';
+// import Feature from './Feature';
 
-function MainForm (props) {
-    const features = Object.keys(FEATURES)
-        .map( key => 
-          <FeatureItem 
-            key={key}
-            features={FEATURES}
-            selected={props.selected}
-            featureTitle={key}
-            handleUpdate={props.handleUpdate} />
-        ); 
-    
-    return (
-     <section className="main__form">
-        <h1>ELF Computing | Laptops</h1>
-        <h2>Customize your laptop</h2>
-          {features}
-     </section>
-      );
-    }
+class MainForm extends Component {
+ render(props){
+  return (
+    <section className="main__form">
+        <h3>TECH SPECS AND CUSTOMIZATIONS</h3>
+        {Object.keys(props.features)
+            .map((key, index, title) => 
+                <FeatureItem
+                    key={index}
+                    index={index}
+                    title={title[index]}
+                    options={props.features[key]}
+                    selected={props.selected}
+                    onClick={props.onClick} 
+                />
+        )}
+    </section>
+);
+}
+}
 
 export default MainForm;

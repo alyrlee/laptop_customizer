@@ -1,34 +1,33 @@
-import React from 'react';
-import Feature from './Feature';
+import React, { Component } from 'react';
 
-//import features from Features
-//contain feature item 
+//contain features section
+    //feature name
+class Feature extends Component{
 
+render(props){
+    const { features, selected, featureTitle, handleUpdate } = props;
+    
+    const options = features[featureTitle].map((item, index) => {
+    updateFeature = (feature, newValue) => {
+    
+  const selected = Object.assign({}, this.state.selected);
+      selected[feature] = newValue;
+      this.setState({
+        selected
+      });
+    };
+  );
 
+  return (
+    <div className="feature_item">
 
-// function featureItem (props){
-//     const  {id, class, name, cost } = props;
-//     const item.name = features[itemName].map((item, index)) =>
-//     <Feature
-//             feature = {feature}
-//             selected = {selected}
-//             name={slugify(feature)}
-//             checked={item.name === this.state.selected[feature].name}
-//             onChange={e => this.updateFeature(feature, item)}
-//           />
-//           <label htmlFor={itemHash} className="feature__label">
-//             {item.name} ({USCurrencyFormat.format(item.cost)})
-//           </label>
-   
-//           return (
-//       <div key={itemHash} className="feature__item">
-//         <type="radio">
-//          <id={itemHash}>
-//          <className="feature__option">
-//          {item.name}
+    onClick={() => handleUpdate(featureTitle, item)}>
+    {item.name}
+    ({new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
+      .format(item.cost)})
+    </div>
+  );
+}
+}
 
-//     </div>
-//     );
-//   }
-
-// export default featureItem;
+export default Feature_Item;

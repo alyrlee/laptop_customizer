@@ -1,27 +1,30 @@
-import React from 'react';
+import React,{Component} from 'react'
+import FEATURES from './src/index'
+import FeatureItem from './FeatureItem'
 
-//contain features section
-    //feature name
-function Feature (props){
-    const { features, selected, featureTitle, handleUpdate } = props;
-  
-  const options = features[featureTitle].map((item, index) =>
-    <ItemOption
-      key={index}
-      item={item}
-      selected={selected}
-      featureTitle={featureTitle}     
-      handleUpdate={handleUpdate}
-    />
-  );
+class Feature extends Component{
+  render(props){
+  const features = Object.keys(FEATURES)
+    .map( key => 
+      <FeatureItem 
+        key={key}
+        features={FEATURES}
+        selected={props.selected}
+        featureTitle={key}
+        handleUpdate={props.handleUpdate} />
+    );
 
   return (
-    <div className="feature">
-      <div className="feature__name">{featureTitle}</div>
-      <ul className="feature__list">
-        {options}
-      </ul>
-    </div>
-  );
+    <div>
+    <section className="main__form">
+      <h3>TECH SPECS AND CUSTOMIZATION</h3>
+      {features}
+    </section>
+   </div> 
+  )
+  }
 }
-export default Feature;
+
+export default Feature
+
+
